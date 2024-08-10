@@ -1,0 +1,207 @@
+.event-manager {
+  max-width: 1200px;
+  width: 90%;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background-color: inherit;
+  color: inherit;
+}
+
+.event-form {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  justify-content: left;
+}
+
+input, button {
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+input {
+  flex-grow: 1;
+  min-width: 200px;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(90, 103, 216, 0.5);
+}
+
+button {
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.add-event-btn {
+  background-color: #71cc74; 
+  color: #ffffff;
+  border: none;
+  min-width: 150px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-event-btn:hover {
+  background-color: #6bb85e; 
+  transform: translateY(-2px);
+}
+
+.update-event-btn {
+  background-color: #2c95eb; 
+  color: #ffffff;
+  border: none;
+  min-width: 150px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.update-event-btn:hover {
+  background-color: #2685d8; 
+  transform: translateY(-2px);
+}
+
+.cancel-edit-btn {
+  background-color: #fb6132; 
+  color: #ffffff;
+  border: none;
+  min-width: 150px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cancel-edit-btn:hover {
+  background-color: #f0562b; 
+  transform: translateY(-2px);
+}
+
+/* Dark theme adjustments */
+.app.dark .add-event-btn {
+  background-color: #8fbc8f; 
+  color: #1a1a1a;
+}
+
+.app.dark .add-event-btn:hover {
+  background-color: #7cac7c;
+}
+
+.app.dark .update-event-btn {
+  background-color: #87cefa; 
+  color: #1a1a1a;
+}
+
+.app.dark .update-event-btn:hover {
+  background-color: #75bce6;
+}
+
+.app.dark .cancel-edit-btn {
+  background-color: #ffa07a; 
+  color: #1a1a1a;
+}
+
+.app.dark .cancel-edit-btn:hover {
+  background-color: #eb9067;
+}
+
+.event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.event-item {
+  padding: 12px;
+  background-color: #f9f3ff;
+  border-radius: 15px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #4a5568;
+}
+
+.app.dark .event-item {
+  background-color: #4a5568;
+  color: #e2e8f0;
+}
+
+.event-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.event-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.event-icons {
+  display: flex;
+  gap: 15px;
+  color: inherit;
+}
+
+.event-icons svg {
+  cursor: pointer;
+  transition: color 0.2s ease-in-out, transform 0.2s ease;
+  font-size: 1.2em;
+}
+
+.event-icons svg:hover {
+  transform: scale(1.1);
+}
+
+.edit-icon:hover {
+  color: #5a67d8;
+}
+
+.delete-icon:hover {
+  color: #ff8b7e;
+}
+
+.event-name {
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.event-date {
+  font-size: 1.1em;
+  color: #718096;
+}
+
+.app.dark .event-date {
+  color: #a0aec0;
+}
+
+.countdown {
+  margin-top: 15px;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #5a67d8;
+}
+
+.app.dark .countdown {
+  color: #7f9cf5;
+}
+
+.no-events {
+  text-align: center;
+  font-size: 1.2em;
+  color: inherit;
+  margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+  .event-form {
+    flex-direction: column;
+  }
+
+  input, button {
+    width: 100%;
+  }
+}
