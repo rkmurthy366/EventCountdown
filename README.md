@@ -1,8 +1,8 @@
-# CountdownTab
+# EventCountdown
 
 ## Description
 
-CountdownTab is a Chrome extension that transforms your new tab page into a dynamic event countdown dashboard. It empowers users to effortlessly add and track upcoming events, displaying real-time countdowns to keep you organized and excited about important dates. With a customizable interface and a hidden sidebar to customize the countdown, CountdownTab is the perfect tool for managing your schedule right from your browser.
+EventCountdown is a Chrome extension that transforms your new tab page into a dynamic event countdown dashboard. It empowers users to effortlessly add and track upcoming events, displaying real-time countdowns to keep you organized and excited about important dates. With a customizable interface and a hidden sidebar to customize the countdown, EventCountdown is the perfect tool for managing your schedule right from your browser.
 
 ## Features
 
@@ -17,7 +17,7 @@ CountdownTab is a Chrome extension that transforms your new tab page into a dyna
 
 1. Download or clone the repository:
    ```
-   git clone https://github.com/your-username/countdowntab.git
+   git clone https://github.com/rkmurthy366/EventCountdown.git
    ```
 
 2. Open Google Chrome and navigate to `chrome://extensions/`
@@ -26,23 +26,23 @@ CountdownTab is a Chrome extension that transforms your new tab page into a dyna
 
 4. Click on "Load unpacked" button
 
-5. Go to directory newtabcountdown/build, and select this folder.
+5. Go to directory EventCountdown/build, and select this folder.
 
 6. The extension should now be installed and active. Open a new tab to see it in action!
 
 
 ## Installation and Build
 
-To install and build the CountdownTab extension, follow these steps:
+To install and build the EventCountdown extension, follow these steps:
 
 1. Clone the repository:
    ```
-   git clone https://github.com/your-username/countdowntab.git
+   git clone https://github.com/rkmurthy366/EventCountdown.git
    ```
 
 2. Navigate to the project directory:
    ```
-   cd countdowntab
+   cd EventCountdown
    ```
 
 3. Install the dependencies:
@@ -100,7 +100,7 @@ Remember to update your `manifest.json` file in the `public` folder to include n
 
 ### Adding an Event
 
-1. Open a new tab to see the CountdownTab dashboard
+1. Open a new tab to see the EventCountdown dashboard
 2. Enter the event name in the "Event Name" input field
 3. Select the event date using the date picker
 4. Click the "Add Event" button to create the event
@@ -129,7 +129,7 @@ Remember to update your `manifest.json` file in the `public` folder to include n
 
 ## Contributing
 
-Contributions to the CountdownTab Chrome Extension project are welcome! Please follow these steps to contribute:
+Contributions to the EventCountdown Chrome Extension project are welcome! Please follow these steps to contribute:
 
 1. Fork the repository
 2. Create a new branch for your feature or bug fix
