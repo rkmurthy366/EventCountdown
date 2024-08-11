@@ -8,7 +8,7 @@ function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
-    return savedTheme || 'light';
+    return savedTheme || 'dark';
   });
   const [countdownUnit, setCountdownUnit] = useState(() => {
     const savedUnit = localStorage.getItem('countdownUnit');

@@ -26,7 +26,7 @@
   align-items: center;
   padding: 15px 20px;
   background-color: inherit;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1);
 }
 
 .header-controls {
@@ -38,7 +38,6 @@
   font-size: 2rem;
   font-weight: 700;
   margin: 0;
-  color: #5a67d8;
 }
 
 .theme-toggle,
@@ -59,27 +58,32 @@
 
 /* Light theme */
 .app.light {
-  background-color: #e6f3ff;
+  background-color: #f0ffeb;
   color: #4a5568;
+}
+
+.app.light .app-header {
+  background-color: inherit;
+  color: #006d77;
 }
 
 .app.light .theme-toggle,
 .app.light .sidebar-toggle {
-  color: #7c98b6;
+  color: #006d77;
 }
 
 .app.light .theme-toggle:hover,
 .app.light .sidebar-toggle:hover {
-  color: #4c51bf;
+  color: #073b4c;
 }
 
 .app.light .event-manager {
-  background-color: #ffffff;
+  background-color: #f6fff8;
   color: #4a5568;
 }
 
 .app.light input {
-  background-color: #f0f7ff;
+  background-color: #f1faee;
   color: #4a5568;
   border: 1px solid #b3d4ff;
 }
@@ -92,6 +96,7 @@
 
 .app.dark .app-header {
   background-color: #1a202c;
+  color: #5a67d8;
 }
 
 .app.dark .theme-toggle,

@@ -4,8 +4,13 @@ import "./EventManager.css";
 
 function EventManager({ countdownUnit }) {
   const [events, setEvents] = useState(() => {
-    const savedEvents = localStorage.getItem("events");
-    return savedEvents ? JSON.parse(savedEvents) : [];
+    try {
+      const savedEvents = localStorage.getItem("events");
+      return savedEvents ? JSON.parse(savedEvents) : [];
+    } catch (error) {
+      console.error("Error reading from localStorage:", error);
+      return [];
+    }
   });
 
   const [editingIndex, setEditingIndex] = useState(null);
@@ -13,9 +18,13 @@ function EventManager({ countdownUnit }) {
   const [eventDate, setEventDate] = useState("");
 
   useEffect(() => {
-    localStorage.setItem("events", JSON.stringify(events));
+    try {
+      localStorage.setItem("events", JSON.stringify(events));
+    } catch (error) {
+      console.error("Error writing to localStorage:", error);
+    }
   }, [events]);
-
+  
   useEffect(() => {
     const timer = setInterval(() => {
       setEvents((prevEvents) => [...prevEvents]);
@@ -25,35 +34,46 @@ function EventManager({ countdownUnit }) {
 
   const addOrUpdateEvent = () => {
     if (eventName && eventDate) {
-      const updatedEvents = [...events];
-      if (editingIndex !== null) {
+      if (editingIndex !== null && editingIndex < events.length) {
+        const updatedEvents = [...events];
         updatedEvents[editingIndex] = { name: eventName, date: eventDate };
-        setEditingIndex(null);
+        setEvents(updatedEvents);
       } else {
-        updatedEvents.push({ name: eventName, date: eventDate });
+        setEvents([...events, { name: eventName, date: eventDate }]);
       }
-      setEvents(updatedEvents);
-      setEventName("");
-      setEventDate("");
+      resetForm();
     }
   };
 
-  const cancelEdit = () => {
+  const resetForm = () => {
     setEditingIndex(null);
     setEventName("");
     setEventDate("");
   };
 
+  const cancelEdit = () => {
+    resetForm();
+  };
+
   const editEvent = (index) => {
-    setEditingIndex(index);
-    setEventName(events[index].name);
-    setEventDate(events[index].date);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (index < events.length) {
+      setEditingIndex(index);
+      setEventName(events[index].name);
+      setEventDate(events[index].date);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      resetForm();
+    }
   };
 
   const deleteEvent = (index) => {
     const updatedEvents = events.filter((_, i) => i !== index);
     setEvents(updatedEvents);
+    if (editingIndex === index) {
+      resetForm();
+    } else if (editingIndex !== null && index < editingIndex) {
+      setEditingIndex(editingIndex - 1);
+    }
   };
 
   const calculateCountdown = (date) => {

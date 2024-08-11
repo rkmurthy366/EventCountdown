@@ -19,8 +19,8 @@
 }
 
 .sidebar-content {
-  width: 200px;
-  padding: 0 20px;
+  width: 210px;
+  padding: 0 15px;
   opacity: 0;
   transition: opacity 0.1s ease;
 }
@@ -32,6 +32,7 @@
 
 .sidebar h3 {
   font-size: 1.2em;
+  font-weight: 700;
   margin-bottom: 20px;
 }
 
@@ -44,22 +45,24 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   font-size: 16px;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .sidebar select:focus {
   outline: none;
   border-color: #5a67d8;
+  box-shadow: 0 0 0 2px rgba(90, 103, 216, 0.5);
 }
 
 /* Light theme adjustments */
 .app.light .sidebar {
-  background-color: #ffffff;
+  background-color: #f1faee;
   color: #4a5568;
 }
 
 .app.light .sidebar select {
-  border-color: #e2e8f0;
+  border: 1px solid #b3d4ff;
+  background-color: #fffdf4;
 }
 
 /* Dark theme adjustments */
