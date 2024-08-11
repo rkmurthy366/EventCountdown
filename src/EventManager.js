@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import "./EventManager.css";
 
-function EventManager() {
+function EventManager({ countdownUnit }) {
   const [events, setEvents] = useState(() => {
-    const savedEvents = localStorage.getItem('events');
+    const savedEvents = localStorage.getItem("events");
     return savedEvents ? JSON.parse(savedEvents) : [];
   });
 
@@ -13,9 +13,9 @@ function EventManager() {
   const [eventDate, setEventDate] = useState("");
 
   useEffect(() => {
-    localStorage.setItem('events', JSON.stringify(events));
+    localStorage.setItem("events", JSON.stringify(events));
   }, [events]);
-  
+
   useEffect(() => {
     const timer = setInterval(() => {
       setEvents((prevEvents) => [...prevEvents]);
@@ -48,6 +48,7 @@ function EventManager() {
     setEditingIndex(index);
     setEventName(events[index].name);
     setEventDate(events[index].date);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const deleteEvent = (index) => {
@@ -57,37 +58,52 @@ function EventManager() {
 
   const calculateCountdown = (date) => {
     const eventDate = new Date(date);
+    eventDate.setHours(0, 0, 0, 0); // Set to midnight
     const currentDate = new Date();
     const diff = eventDate - currentDate;
 
-    const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
-    const months = Math.floor(
-      (diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30.44)
-    );
-    const weeks = Math.floor(
-      (diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24 * 7)
-    );
-    const days = Math.floor(
-      (diff % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24)
-    );
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    if (diff < 0) {
+      return "Event has passed";
+    }
 
-    const parts = [];
+    const totalSeconds = diff / 1000;
+    const totalMinutes = totalSeconds / 60;
+    const totalHours = totalMinutes / 60;
+    const totalDays = totalHours / 24;
+    const totalWeeks = totalDays / 7;
 
-    if (years > 0) parts.push(`${years} ${years === 1 ? "year" : "years"}`);
-    if (months > 0)
-      parts.push(`${months} ${months === 1 ? "month" : "months"}`);
-    if (weeks > 0) parts.push(`${weeks} ${weeks === 1 ? "week" : "weeks"}`);
-    if (days > 0) parts.push(`${days} ${days === 1 ? "day" : "days"}`);
-    if (hours > 0) parts.push(`${hours} ${hours === 1 ? "hour" : "hours"}`);
-    if (minutes > 0)
-      parts.push(`${minutes} ${minutes === 1 ? "minute" : "minutes"}`);
-    if (seconds > 0)
-      parts.push(`${seconds} ${seconds === 1 ? "second" : "seconds"}`);
+    switch (countdownUnit) {
+      case "seconds":
+        return `${totalSeconds.toFixed(0)} second${
+          totalSeconds !== 1 ? "s" : ""
+        }`;
+      case "hours":
+        return `${totalHours.toFixed(3)} hour${totalHours !== 1 ? "s" : ""}`;
+      case "days":
+        return `${totalDays.toFixed(3)} day${totalDays !== 1 ? "s" : ""}`;
+      case "weeks":
+        return `${totalWeeks.toFixed(3)} week${totalWeeks !== 1 ? "s" : ""}`;
+      default:
+        const years = Math.floor(totalDays / 365);
+        const months = Math.floor((totalDays % 365) / 30);
+        const remainingDays = Math.floor(totalDays % 30);
+        const hours = Math.floor(totalHours % 24);
+        const minutes = Math.floor(totalMinutes % 60);
+        const seconds = Math.floor(totalSeconds % 60);
 
-    return parts.length > 0 ? parts.join(", ") : "Event has passed";
+        const parts = [];
+        if (years > 0) parts.push(`${years} year${years !== 1 ? "s" : ""}`);
+        if (months > 0) parts.push(`${months} month${months !== 1 ? "s" : ""}`);
+        if (remainingDays > 0)
+          parts.push(`${remainingDays} day${remainingDays !== 1 ? "s" : ""}`);
+        if (hours > 0) parts.push(`${hours} hour${hours !== 1 ? "s" : ""}`);
+        if (minutes > 0)
+          parts.push(`${minutes} minute${minutes !== 1 ? "s" : ""}`);
+        if (seconds > 0)
+          parts.push(`${seconds} second${seconds !== 1 ? "s" : ""}`);
+
+        return parts.join(", ");
+    }
   };
 
   const today = new Date().toISOString().split("T")[0];
@@ -105,7 +121,7 @@ function EventManager() {
           type="date"
           value={eventDate}
           onChange={(e) => setEventDate(e.target.value)}
-          min={today} // Disable past dates
+          min={today}
         />
         <button
           onClick={addOrUpdateEvent}

@@ -1,23 +1,38 @@
 .event-manager {
-  max-width: 1200px;
+  max-width: 900px;
   width: 90%;
-  margin: 40px auto;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  padding: 20px 30px 30px;
   background-color: inherit;
-  color: inherit;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .event-form {
   display: flex;
-  gap: 15px;
-  margin-bottom: 40px;
   flex-wrap: wrap;
+  gap: 15px;
   justify-content: left;
+  margin-bottom: 20px;
 }
 
-input, button {
+.event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.event-item {
+  padding: 12px;
+  background-color: #f9f3ff;
+  border-radius: 15px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #4a5568;
+}
+
+input,
+button {
   padding: 12px 20px;
   border-radius: 10px;
   font-size: 16px;
@@ -42,7 +57,7 @@ button {
 }
 
 .add-event-btn {
-  background-color: #71cc74; 
+  background-color: #71cc74;
   color: #ffffff;
   border: none;
   min-width: 150px;
@@ -50,12 +65,12 @@ button {
 }
 
 .add-event-btn:hover {
-  background-color: #6bb85e; 
+  background-color: #6bb85e;
   transform: translateY(-2px);
 }
 
 .update-event-btn {
-  background-color: #2c95eb; 
+  background-color: #2c95eb;
   color: #ffffff;
   border: none;
   min-width: 150px;
@@ -63,12 +78,12 @@ button {
 }
 
 .update-event-btn:hover {
-  background-color: #2685d8; 
+  background-color: #2685d8;
   transform: translateY(-2px);
 }
 
 .cancel-edit-btn {
-  background-color: #fb6132; 
+  background-color: #fb6132;
   color: #ffffff;
   border: none;
   min-width: 150px;
@@ -76,13 +91,13 @@ button {
 }
 
 .cancel-edit-btn:hover {
-  background-color: #f0562b; 
+  background-color: #f0562b;
   transform: translateY(-2px);
 }
 
 /* Dark theme adjustments */
 .app.dark .add-event-btn {
-  background-color: #8fbc8f; 
+  background-color: #8fbc8f;
   color: #1a1a1a;
 }
 
@@ -91,7 +106,7 @@ button {
 }
 
 .app.dark .update-event-btn {
-  background-color: #87cefa; 
+  background-color: #87cefa;
   color: #1a1a1a;
 }
 
@@ -100,27 +115,12 @@ button {
 }
 
 .app.dark .cancel-edit-btn {
-  background-color: #ffa07a; 
+  background-color: #ffa07a;
   color: #1a1a1a;
 }
 
 .app.dark .cancel-edit-btn:hover {
   background-color: #eb9067;
-}
-
-.event-list {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
-.event-item {
-  padding: 12px;
-  background-color: #f9f3ff;
-  border-radius: 15px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  color: #4a5568;
 }
 
 .app.dark .event-item {
@@ -136,7 +136,6 @@ button {
 .event-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .event-icons {
@@ -164,13 +163,13 @@ button {
 }
 
 .event-name {
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-weight: 600;
   margin-bottom: 5px;
 }
 
 .event-date {
-  font-size: 1.1em;
+  font-size: 1em;
   color: #718096;
 }
 
@@ -201,7 +200,8 @@ button {
     flex-direction: column;
   }
 
-  input, button {
+  input,
+  button {
     width: 100%;
   }
 }

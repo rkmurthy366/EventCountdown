@@ -1,0 +1,79 @@
+.sidebar {
+  position: fixed;
+  top: 80px; 
+  right: 0;
+  width: 0;
+  height: calc(100vh - 80px); /* Adjust based on your header height */
+  background-color: inherit;
+  overflow-x: hidden;
+  transition: width 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px 0;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  z-index: 2000;
+}
+
+.sidebar.open {
+  width: 240px;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-content {
+  width: 200px;
+  padding: 0 20px;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.sidebar.open .sidebar-content {
+  opacity: 1;
+  transition: opacity 0.2s ease 0.1s;
+}
+
+.sidebar h3 {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.sidebar select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: inherit;
+  color: inherit;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.sidebar select:focus {
+  outline: none;
+  border-color: #5a67d8;
+}
+
+/* Light theme adjustments */
+.app.light .sidebar {
+  background-color: #ffffff;
+  color: #4a5568;
+}
+
+.app.light .sidebar select {
+  border-color: #e2e8f0;
+}
+
+/* Dark theme adjustments */
+.app.dark .sidebar {
+  background-color: #3a4b63;
+  color: #e2e8f0;
+}
+
+.app.dark .sidebar select {
+  border-color: #4a5568;
+  color: #e2e8f0; 
+  background-color: #2d3748; 
+}
+
+.app.dark .sidebar select option {
+  background-color: #2d3748;
+}

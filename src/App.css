@@ -1,67 +1,3 @@
-/* Global styles */
-
-/* Example: Include this at the top of your CSS file */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-
-body {
-  line-height: 1;
-}
-
-ol, ul {
-  list-style: none;
-}
-
-blockquote, q {
-  quotes: none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* In your main CSS file */
-html {
-  font-size: 16px; /* or your preferred base size */
-}
-
-body {
-  font-family: Arial, sans-serif;
-  font-size: 1rem; /* or adjust accordingly */
-}
-
-
 .app {
   font-family: 'Roboto', Arial, sans-serif;
   text-align: center;
@@ -69,13 +5,72 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px; /* Add padding to account for fixed header */
+  flex-grow: 1;
+}
+
+/* App header styles */
+.app-header {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: inherit;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  color: #5a67d8;
+}
+
+.theme-toggle,
+.sidebar-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  transition: color 0.3s, transform 0.2s;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.theme-toggle:hover,
+.sidebar-toggle:hover {
+  transform: scale(1.1);
 }
 
 /* Light theme */
 .app.light {
   background-color: #e6f3ff;
   color: #4a5568;
+}
+
+.app.light .theme-toggle,
+.app.light .sidebar-toggle {
+  color: #7c98b6;
+}
+
+.app.light .theme-toggle:hover,
+.app.light .sidebar-toggle:hover {
+  color: #4c51bf;
 }
 
 .app.light .event-manager {
@@ -89,14 +84,24 @@ body {
   border: 1px solid #b3d4ff;
 }
 
-.app.light .theme-toggle {
-  color: #7c98b6;
-}
-
 /* Dark theme */
 .app.dark {
   background-color: #2d3748;
   color: #e2e8f0;
+}
+
+.app.dark .app-header {
+  background-color: #1a202c;
+}
+
+.app.dark .theme-toggle,
+.app.dark .sidebar-toggle {
+  color: #a0aec0;
+}
+
+.app.dark .theme-toggle:hover,
+.app.dark .sidebar-toggle:hover {
+  color: #7f9cf5;
 }
 
 .app.dark .event-manager {
@@ -108,47 +113,4 @@ body {
   background-color: #4a5568;
   color: #e2e8f0;
   border: 1px solid #63728f;
-}
-
-.app.dark .theme-toggle {
-  color: #a0aec0;
-}
-
-/* Header styles */
-.app-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: inherit;
-}
-
-.app-header h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin: 0;
-  color: #5a67d8;
-}
-
-/* Theme toggle button */
-.theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.8em;
-  transition: color 0.3s, transform 0.2s;
-  padding: 10px;
-  border-radius: 50%;
-}
-
-.theme-toggle:hover {
-  transform: scale(1.1);
-}
-
-.app.light .theme-toggle:hover {
-  color: #4c51bf;
-}
-
-.app.dark .theme-toggle:hover {
-  color: #7f9cf5;
 }
